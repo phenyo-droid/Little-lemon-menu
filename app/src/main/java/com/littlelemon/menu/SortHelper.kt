@@ -4,14 +4,9 @@ class SortHelper {
 
     fun sortProducts(type: SortType, productsList: List<ProductItem>): List<ProductItem> {
         return when (type) {
-            SortType.Alphabetically -> productsList.sortAlphabetically()
-            SortType.PriceAsc -> TODO("create extension function for List<Product> with sorting based on price ascending")
-            SortType.PriceDesc -> TODO("create extension function for List<Product> with sorting based on price descending")
+            SortType.Alphabetically -> productsList.sortedBy { it.title }
+            SortType.PriceAsc -> productsList.sortedBy { it.price } // Added
+            SortType.PriceDesc -> productsList.sortedByDescending { it.price } // Added
         }
     }
-
-    private fun List<ProductItem>.sortAlphabetically(): List<ProductItem> {
-        return sortedBy { it.title }
-    }
-
 }

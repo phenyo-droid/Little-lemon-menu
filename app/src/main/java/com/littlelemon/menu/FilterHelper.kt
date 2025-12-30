@@ -1,14 +1,22 @@
 package com.littlelemon.menu
 
-class FilterHelper {//TODO create a FilterHelperTest and write a unit test for filterProducts
+import androidx.compose.foundation.clickable
+// ... other imports ...
 
-    fun filterProducts(type: FilterType, productsList: List<ProductItem>): List<ProductItem> {
-        return when (type) {
-            FilterType.All -> productsList
-            FilterType.Dessert -> TODO("only products with category equal to Dessert")
-            FilterType.Drinks -> TODO("only products with category equal to Drinks")
-            FilterType.Food -> TODO("only products with category equal to Food")
+@Composable
+fun ProductsGrid(
+    products: List<ProductItem>,
+    startProductActivity: (ProductItem) -> Unit // Added parameter
+) {
+    // ... LazyVerticalGrid implementation ...
+
+    // Inside items logic where ProductCard is called:
+    ProductCard(
+        productItem = product,
+        modifier = Modifier.clickable {
+            startProductActivity(product) // Execute function on click
         }
-    }
+    )
 
+    // ...
 }
